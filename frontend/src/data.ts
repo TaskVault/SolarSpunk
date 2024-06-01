@@ -933,22 +933,42 @@ export function getCountries() {
   ];
 }
 
+export function getData() {
+  const history = getHistoricalEnergyProduction();
+  const prediction = getPredictedEnergyProduction(history);
+
+  return {
+    history,
+    prediction,
+  };
+}
+
 export function getHistoricalEnergyProduction() {
-  const today = new Date();
+  const now = new Date();
   const data = [];
-  for (let i = 0; i < 30; i++) {
-    const date = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() - i
-    );
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+  for (let i = 0; i < 24; i++) {
+    const date = new Date(now.getTime() - i * 60 * 60 * 1000);
+
     const solar = Math.random();
-    const wind = Math.random();
-    const hydro = Math.random();
-    data.push({ year, month, day, solar, wind, hydro });
+
+    data.push({ date, solar });
+  }
+  return data;
+}
+
+export function getPredictedEnergyProduction(history: any[]) {
+  const now = new Date();
+  const data = [];
+  for (let i = 0; i < 24; i++) {
+    const date = new Date(now.getTime() + i * 60 * 60 * 1000);
+
+    // calculate the average of the history and add some positive noise
+
+    const solar =
+      history.reduce((acc, { solar }) => acc + solar, 0) / history.length +
+      Math.random() * 0.1;
+
+    data.push({ date, solar });
   }
   return data;
 }
