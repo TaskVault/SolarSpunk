@@ -1,0 +1,42 @@
+alphabet_in:
+- NO_MAJORITY
+- DONE
+- TIMEOUT
+default_start_state: SubscriptionManagementRound
+final_states:
+- TransactionSubmissionRound
+label: SolarSpunkAbciApp
+start_states:
+- SubscriptionManagementRound
+states:
+- SubscriptionManagementRound
+- DataCollectionRound
+- AdjustMiningRateRound
+- UpdateNFTRound
+- CollateralizationRound
+- YieldFarmingRound
+- TransactionSubmissionRound
+transition_func:
+  (SubscriptionManagementRound, DONE): DataCollectionRound
+  (SubscriptionManagementRound, NO_MAJORITY): SubscriptionManagementRound
+  (SubscriptionManagementRound, TIMEOUT): SubscriptionManagementRound
+
+  (DataCollectionRound, DONE): AdjustMiningRateRound
+  (DataCollectionRound, NO_MAJORITY): DataCollectionRound
+  (DataCollectionRound, TIMEOUT): SubscriptionManagementRound
+
+  (AdjustMiningRateRound, DONE): UpdateNFTRound
+  (AdjustMiningRateRound, NO_MAJORITY): AdjustMiningRateRound
+  (AdjustMiningRateRound, TIMEOUT): SubscriptionManagementRound
+
+  (UpdateNFTRound, DONE): CollateralizationRound
+  (UpdateNFTRound, NO_MAJORITY): UpdateNFTRound
+  (UpdateNFTRound, TIMEOUT): SubscriptionManagementRound
+
+  (CollateralizationRound, DONE): YieldFarmingRound
+  (CollateralizationRound, NO_MAJORITY): CollateralizationRound
+  (CollateralizationRound, TIMEOUT): SubscriptionManagementRound
+
+  (YieldFarmingRound, DONE): TransactionSubmissionRound
+  (YieldFarmingRound, NO_MAJORITY): YieldFarmingRound
+  (YieldFarmingRound, TIMEOUT): SubscriptionManagementRound
