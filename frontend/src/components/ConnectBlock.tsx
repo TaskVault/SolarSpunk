@@ -1,13 +1,14 @@
-import { Button, Title,  Flex, TextInput } from "@mantine/core";
-import {useConnect} from "wagmi";
+import { useConnect } from "wagmi";
 import {
-  useKernelClient, 
+  useKernelClient,
   useDisconnectKernelClient,
-  useCreateKernelClientEOA, 
+  useCreateKernelClientEOA,
   useCreateKernelClientSocial,
-  useCreateKernelClientPasskey
+  useCreateKernelClientPasskey,
 } from "@zerodev/waas";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
+import { Title, Flex, TextInput } from "@mantine/core";
+import { Button } from "./button";
 
 function EOASigner() {
   const { connectors } = useConnect();
@@ -19,28 +20,24 @@ function EOASigner() {
     <div className="flex flex-col items-center gap-2">
       {!isConnected ? (
         <>
-        <Title order={5}>EOA</Title>
-        {connectors.map((connector) => (
-          <div key={connector.uid} className="w-full">
-            <Button
-              disabled={isPending}
-              onClick={() =>  connect({ connector })}
-              fullWidth
-              variant="outline"
-              style={{ justifyContent: "center" }}
-            >
-              {connector.name}
-            </Button>
-          </div>
-        ))}
-      </>
+          <Title order={5}>EOA</Title>
+          {connectors.map((connector) => (
+            <div key={connector.uid} className="w-full">
+              <Button
+                disabled={isPending}
+                onClick={() => connect({ connector })}
+                style={{ justifyContent: "center" }}
+              >
+                {connector.name}
+              </Button>
+            </div>
+          ))}
+        </>
       ) : (
         <Button
           onClick={() => {
             disconnect();
           }}
-          fullWidth
-          variant="outline"
           style={{ justifyContent: "center" }}
         >
           Disconnect
@@ -52,9 +49,8 @@ function EOASigner() {
 
 function PasskeySigner() {
   const [username, setUsername] = useState("");
-  const { connectRegister, connectLogin, isPending } = useCreateKernelClientPasskey(
-    { version: "v3" }
-  );
+  const { connectRegister, connectLogin, isPending } =
+    useCreateKernelClientPasskey({ version: "v3" });
 
   return (
     <Flex justify="between" align="start" className="w-4/5">
@@ -72,11 +68,9 @@ function PasskeySigner() {
           className="mb-1 p-1"
         />
         <Button
-          variant="outline"
           style={{ padding: "3px" }}
-          loading={isPending}
           disabled={isPending || !username}
-          onClick={() =>  connectRegister({ username })}
+          onClick={() => connectRegister({ username })}
         >
           Register
         </Button>
@@ -90,9 +84,7 @@ function PasskeySigner() {
         <Title order={5}>Login</Title>
         <Button
           className="mt-5"
-          variant="outline"
           style={{ padding: "3px" }}
-          loading={isPending}
           disabled={isPending}
           onClick={() => connectLogin()}
         >
@@ -107,24 +99,37 @@ export default function ConnectBlock() {
   const [signerOption, setSignerOption] = useState("");
   const { isConnected } = useKernelClient();
   const { disconnect } = useDisconnectKernelClient();
-  const { login, isPending } = useCreateKernelClientSocial(
-    { version: "v3" }
-  );
+  const { login, isPending } = useCreateKernelClientSocial({ version: "v3" });
+
+  useEffect(() => {
+    if (isConnected) {
+      setSignerOption("");
+    }
+  }, [isConnected]);
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       {isConnected ? (
-        <Button variant="outline" onClick={() => disconnect()}>Disconnet</Button>
+        <Button onClick={() => disconnect()}>Disconnect</Button>
       ) : (
         <>
           {signerOption === "" ? (
-            <Flex flex={1} justify="between" align="center" className="space-x-4">
-              <Button onClick={() => setSignerOption("eoa")}>EOA</Button>
-              <Button onClick={() => setSignerOption("passkey")}>Passkey</Button>
-              <Button loading={isPending} onClick={() => login("google")}>Social</Button>
-            </Flex> 
+            <Flex flex={1} justify="center" className="flex-col space-y-4">
+              <Button onClick={() => setSignerOption("eoa")}>
+                Browser Wallet
+              </Button>
+              <Button onClick={() => setSignerOption("passkey")}>
+                Passkey
+              </Button>
+              <Button onClick={() => login("google")}>Google Login</Button>
+            </Flex>
           ) : (
-            <Flex direction="column" justify="between" align="center" className="space-y-4 w-full">
+            <Flex
+              direction="column"
+              justify="center"
+              align="center"
+              className="space-y-4 w-full"
+            >
               {signerOption === "eoa" && <EOASigner />}
               {signerOption === "passkey" && <PasskeySigner />}
               <Button onClick={() => setSignerOption("")}>Back</Button>
@@ -132,6 +137,6 @@ export default function ConnectBlock() {
           )}
         </>
       )}
-    </>
-  )
+    </div>
+  );
 }

@@ -11,7 +11,10 @@ import { ApplicationLayout } from "./application-layout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "%s - SolarSpunk",
+  title: {
+    template: "%s - SolarSpunk",
+    default: "SolarSpunk",
+  },
   description: "",
 };
 

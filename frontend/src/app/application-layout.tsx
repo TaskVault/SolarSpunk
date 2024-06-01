@@ -50,7 +50,7 @@ import {
   Square2StackIcon,
   TicketIcon,
 } from "@heroicons/react/20/solid";
-import { useKernelClient } from "@zerodev/waas";
+import { useDisconnectKernelClient, useKernelClient } from "@zerodev/waas";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -66,10 +66,13 @@ export function ApplicationLayout({
   const [hydration, setHydratoin] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const { isConnected, error } = useKernelClient();
+  const { disconnect } = useDisconnectKernelClient();
 
   useEffect(() => {
     setHydratoin(true);
   }, []);
+
+  useEffect(() => {}, [isConnected]);
 
   if (!hydration) return null;
 
@@ -133,6 +136,13 @@ export function ApplicationLayout({
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
               <SidebarItem
+                href="/dashboard"
+                current={pathname.startsWith("/dashboard")}
+              >
+                <SparklesIcon />
+                <SidebarLabel>Dashboard</SidebarLabel>
+              </SidebarItem>
+              <SidebarItem
                 href="/events"
                 current={pathname.startsWith("/events")}
               >
@@ -163,12 +173,16 @@ export function ApplicationLayout({
               <Button onClick={() => setLoginModalOpen(true)}>Connect</Button>
             )}
             <Dialog
-              open={loginModalOpen}
+              open={loginModalOpen && !isConnected}
               onClose={() => setLoginModalOpen(false)}
               title="Connect"
             >
               <ConnectBlock />
             </Dialog>
+            {isConnected && <SmartAccountBlock />}
+            {isConnected && (
+              <Button onClick={() => disconnect()}>Disconnect</Button>
+            )}
           </SidebarFooter>
         </Sidebar>
       }
