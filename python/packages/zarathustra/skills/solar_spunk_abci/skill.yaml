@@ -1,0 +1,150 @@
+aea_version: '>=1.0.0, <2.0.0'
+author: zarathustra
+behaviours:
+  main:
+    args: {}
+    class_name: SolarSpunkRoundBehaviour
+connections: []
+contracts: []
+customs: []
+dependencies: {}
+description: The scaffold skill is a scaffold for your own skill implementation.
+fingerprint:
+  __init__.py: bafybeiezfcieshnvt5qgxt7pg7ggdvifuvv3m6r4rmusqe7qsi4wtnkl5a
+  behaviours.py: bafybeibdkk4c53umvwultwnmytb73tk223n4vbzi6btroryqjnhbiylnwm
+  dialogues.py: bafybeidgblieryz4webm25bbz6wasyhxqzn4n6qjz2u6c534xopwxff5kq
+  fsm_specification.yaml: bafybeibw4mazfdp3lpalldtcw4sytxgdzhom6tga7ir6mwuelfex5qnfo4
+  handlers.py: bafybeif4pceiwhh5mcqkj4cw7zvfaddm6mojzmqwmmmdgkdyabfrm5fr2u
+  models.py: bafybeib4nte3icbbcoz74wsc54ay4m54zatou6s7yd7qkvjlnyrr533ymy
+  payloads.py: bafybeidzecnw3aos5bhmag7rwdishntb2agsp6sjnyxduj3swauxwvzc7m
+  rounds.py: bafybeicz7x5zhjfhwnc5bosjvy5whnf7lce256esxhkzxsabgb2vbjjvx4
+  tests/__init__.py: bafybeifigp64li3j3yidpan5arc27etm3jytadjsckjaidrem57hst73ry
+  tests/test_behaviours.py: bafybeie53onmdqcatvqixhsdimv7nuebgaf2zxz3smfauknuinf5ti3i4m
+  tests/test_dialogues.py: bafybeiejqaxnq3plgdryksxcm4e7hawc2itro2k3gw4hnqfemlt2qzlvgu
+  tests/test_handlers.py: bafybeiazsavvfrlpjfyozx2xppfmielhv6g4k4rpx2wtg4suj2w72nti5m
+  tests/test_models.py: bafybeidpmgs4pzcsrng736jwli5hokfxsc5vserjlmu2yaal2uoxebrhjy
+  tests/test_payloads.py: bafybeicwncita7t3vrezeloe3c434g5r32zrus5eiun4sfrfbep6el3tm4
+  tests/test_rounds.py: bafybeibfthhyj4mqotc4w3goy2wo3jiusmeykl67gehye4vofhosozws5i
+fingerprint_ignore_patterns: []
+handlers:
+  abci:
+    args: {}
+    class_name: ABCIHandler
+  contract_api:
+    args: {}
+    class_name: ContractApiHandler
+  http:
+    args: {}
+    class_name: HttpHandler
+  ipfs:
+    args: {}
+    class_name: IpfsHandler
+  ledger_api:
+    args: {}
+    class_name: LedgerApiHandler
+  signing:
+    args: {}
+    class_name: SigningHandler
+  tendermint:
+    args: {}
+    class_name: TendermintHandler
+is_abstract: true
+license: Apache-2.0
+models:
+  abci_dialogues:
+    args: {}
+    class_name: AbciDialogues
+  benchmark_tool:
+    args:
+      log_dir: /logs
+    class_name: BenchmarkTool
+  contract_api_dialogues:
+    args: {}
+    class_name: ContractApiDialogues
+  http_dialogues:
+    args: {}
+    class_name: HttpDialogues
+  ipfs_dialogues:
+    args: {}
+    class_name: IpfsDialogues
+  ledger_api_dialogues:
+    args: {}
+    class_name: LedgerApiDialogues
+  params:
+    args:
+      cleanup_history_depth: 1
+      cleanup_history_depth_current: null
+      drand_public_key: 868f005eb8e6e4ca0a47c8a77ceaa5309a47978a7c71bc5cce96366b5d7a569937c529eeda66c7293784a9402801af31
+      finalize_timeout: 60.0
+      genesis_config:
+        chain_id: chain-c4daS1
+        consensus_params:
+          block:
+            max_bytes: '22020096'
+            max_gas: '-1'
+            time_iota_ms: '1000'
+          evidence:
+            max_age_duration: '172800000000000'
+            max_age_num_blocks: '100000'
+            max_bytes: '1048576'
+          validator:
+            pub_key_types:
+            - ed25519
+          version: {}
+        genesis_time: '2022-05-20T16:00:21.735122717Z'
+        voting_power: '10'
+      history_check_timeout: 1205
+      ipfs_domain_name: null
+      keeper_allowed_retries: 3
+      keeper_timeout: 30.0
+      light_slash_unit_amount: 5000000000000000
+      max_attempts: 10
+      max_healthcheck: 120
+      on_chain_service_id: null
+      request_retry_delay: 1.0
+      request_timeout: 10.0
+      reset_pause_duration: 10
+      reset_tendermint_after: 2
+      retry_attempts: 400
+      retry_timeout: 3
+      round_timeout_seconds: 30.0
+      serious_slash_unit_amount: 8000000000000000
+      service_id: solar_spunk_abci
+      service_registry_address: null
+      setup:
+        all_participants:
+        - '0x0000000000000000000000000000000000000000'
+        consensus_threshold: null
+        safe_contract_address: '0x0000000000000000000000000000000000000000'
+      share_tm_config_on_startup: false
+      slash_cooldown_hours: 3
+      slash_threshold_amount: 10000000000000000
+      sleep_time: 1
+      tendermint_check_sleep_delay: 3
+      tendermint_com_url: http://localhost:8080
+      tendermint_max_retries: 5
+      tendermint_p2p_url: localhost:26656
+      tendermint_url: http://localhost:26657
+      tx_timeout: 10.0
+      use_slashing: false
+      use_termination: false
+      validate_timeout: 1205
+    class_name: Params
+  requests:
+    args: {}
+    class_name: Requests
+  signing_dialogues:
+    args: {}
+    class_name: SigningDialogues
+  state:
+    args: {}
+    class_name: SharedState
+  tendermint_dialogues:
+    args: {}
+    class_name: TendermintDialogues
+name: solar_spunk_abci
+protocols: []
+skills:
+- valory/abstract_round_abci:0.1.0:bafybeihnb4dd2ey2vjhlbprtxhnpc4q4resnsdrhpavjqnqaq467d6ouey
+type: skill
+version: 0.1.0
