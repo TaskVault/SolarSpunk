@@ -81,13 +81,7 @@ export function ApplicationLayout({
       navbar={
         <Navbar>
           <NavbarSpacer />
-          <NavbarSection>
-            <Dropdown>
-              <DropdownButton as={NavbarItem}>
-                <Avatar src="/users/erica.jpg" square />
-              </DropdownButton>
-            </Dropdown>
-          </NavbarSection>
+          <NavbarSection></NavbarSection>
         </Navbar>
       }
       sidebar={
@@ -112,15 +106,7 @@ export function ApplicationLayout({
                   <Avatar slot="icon" src="/teams/catalyst.svg" />
                   <DropdownLabel>Catalyst</DropdownLabel>
                 </DropdownItem>
-                <DropdownItem href="#">
-                  <Avatar
-                    slot="icon"
-                    initials="BE"
-                    className="bg-purple-500 text-white"
-                  />
-                  <DropdownLabel>Big Events</DropdownLabel>
-                </DropdownItem>
-                <DropdownDivider />
+
                 <DropdownItem href="#">
                   <PlusIcon />
                   <DropdownLabel>New team&hellip;</DropdownLabel>
@@ -135,34 +121,24 @@ export function ApplicationLayout({
                 <HomeIcon />
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
-              <SidebarItem
-                href="/dashboard"
-                current={pathname.startsWith("/dashboard")}
-              >
-                <SparklesIcon />
-                <SidebarLabel>Dashboard</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem
-                href="/events"
-                current={pathname.startsWith("/events")}
-              >
-                <Square2StackIcon />
-                <SidebarLabel>Events</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem
-                href="/orders"
-                current={pathname.startsWith("/orders")}
-              >
-                <TicketIcon />
-                <SidebarLabel>Orders</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem
-                href="/settings"
-                current={pathname.startsWith("/settings")}
-              >
-                <Cog6ToothIcon />
-                <SidebarLabel>Settings</SidebarLabel>
-              </SidebarItem>
+              {isConnected && (
+                <SidebarItem
+                  href="/dashboard"
+                  current={pathname.startsWith("/dashboard")}
+                >
+                  <SparklesIcon />
+                  <SidebarLabel>Dashboard</SidebarLabel>
+                </SidebarItem>
+              )}
+              {isConnected && (
+                <SidebarItem
+                  href="/mint"
+                  current={pathname.startsWith("/mint")}
+                >
+                  <TicketIcon />
+                  <SidebarLabel>Mint</SidebarLabel>
+                </SidebarItem>
+              )}
             </SidebarSection>
 
             <SidebarSpacer />

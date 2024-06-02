@@ -5,6 +5,7 @@ import truncateEthAddress from "truncate-eth-address";
 export default function SmartAccountBlock() {
   const { address } = useKernelClient();
   const { data } = useBalance();
+  console.log(address);
 
   return (
     <>

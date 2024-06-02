@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/table";
-import { getHistoricalEnergyProduction } from "@/data";
+import { getData, getHistoricalEnergyProduction } from "@/data";
 
 import {
   LineChart,
@@ -46,13 +46,24 @@ export function Stat({
   );
 }
 
-export default function Home() {
-  const rawdata = getHistoricalEnergyProduction();
-  const data = rawdata.sort((a, b) => {
+export default function Dashboard() {
+  const rawdata = getData();
+  const historicalSortedData = rawdata.history.sort((a, b) => {
+    return a.date.getTime() - b.date.getTime();
+  });
+  const predictionSortedData = rawdata.prediction.sort((a, b) => {
     return a.date.getTime() - b.date.getTime();
   });
 
-  const sums = data.reduce(
+  const historicalSum = historicalSortedData.reduce(
+    (acc, { solar }) => {
+      acc.solar += solar;
+      return acc;
+    },
+    { solar: 0 }
+  );
+
+  const predictionSum = predictionSortedData.reduce(
     (acc, { solar }) => {
       acc.solar += solar;
       return acc;
@@ -68,15 +79,20 @@ export default function Home() {
       </div>
       <div className="mt-3 grid gap-8 sm:grid-cols-1 xl:grid-cols-3">
         <Stat
-          title="Solar"
-          value={sums.solar.toFixed(4).toString()}
+          title="Power produced last 24h"
+          value={historicalSum.solar.toFixed(4).toString()}
+          change={"+" + (100 * Math.random()).toFixed(2).toString()}
+        />
+        <Stat
+          title="Est. power produced next 24h"
+          value={predictionSum.solar.toFixed(4).toString()}
           change={"+" + (100 * Math.random()).toFixed(2).toString()}
         />
       </div>
 
       <Subheading>Chart</Subheading>
 
-      <LineChart width={1000} height={400} data={data}>
+      <LineChart width={1000} height={400} data={historicalSortedData}>
         <CartesianGrid stroke="#ccc" />
         <Line type="monotone" dataKey="solar" stroke="#c7c92a" />
         <Tooltip />
@@ -84,7 +100,7 @@ export default function Home() {
         <YAxis />
       </LineChart>
 
-      <Subheading className="mt-14">Energy generated last 30 Days</Subheading>
+      <Subheading className="mt-14">Energy generated last 24h</Subheading>
       <Table className="mt-4 [--gutter:theme(spacing.6)] lg:[--gutter:theme(spacing.10)]">
         <TableHead>
           <TableRow>
@@ -93,7 +109,7 @@ export default function Home() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((dataset) => (
+          {historicalSortedData.map((dataset) => (
             <TableRow
               key={dataset.date.toISOString()}
               title={`Energy production for ${dataset.date}`}
