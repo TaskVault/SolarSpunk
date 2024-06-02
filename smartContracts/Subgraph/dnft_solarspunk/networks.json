@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "SolarSpunkerNFT": {
+      "address": "0x1ddFaf71fc609022cBe0bc3588479B107304f72d",
+      "startBlock": 6022846
+    }
+  }
+}
