@@ -101,7 +101,8 @@ sudo mv tendermint /usr/local/bin/tendermint
 ```
 
 ```shell
-sudo chown -R $(whoami):$(whoami) /home/(whoami)/tendermint_data
+GROUP=$(id -gn)
+sudo chown -R $(whoami):$GROUP /home/$(whoami)/tendermint_data
 ```
 
 Run the Tendermint node:
