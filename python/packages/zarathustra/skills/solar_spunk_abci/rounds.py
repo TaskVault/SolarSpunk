@@ -30,6 +30,7 @@ from packages.valory.skills.abstract_round_abci.base import (
     BaseSynchronizedData,
     DegenerateRound,
     EventToTimeout,
+    get_name,
 )
 
 from packages.zarathustra.skills.solar_spunk_abci.payloads import (
@@ -57,6 +58,11 @@ class SynchronizedData(BaseSynchronizedData):
     This data is replicated by the tendermint application.
     """
 
+    @property
+    def most_voted_tx_hash(self) -> float:
+        """Get the most_voted_tx_hash."""
+        return cast(float, self.db.get_strict("most_voted_tx_hash"))
+
 
 class AdjustMiningRateRound(AbstractRound):
     """AdjustMiningRateRound"""
@@ -73,15 +79,14 @@ class AdjustMiningRateRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: AdjustMiningRatePayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: AdjustMiningRatePayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class CollateralizationRound(AbstractRound):
@@ -99,15 +104,14 @@ class CollateralizationRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: CollateralizationPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: CollateralizationPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class DataCollectionRound(AbstractRound):
@@ -125,15 +129,14 @@ class DataCollectionRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: DataCollectionPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: DataCollectionPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class SubscriptionManagementRound(AbstractRound):
@@ -151,15 +154,14 @@ class SubscriptionManagementRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: SubscriptionManagementPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: SubscriptionManagementPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class UpdateNFTRound(AbstractRound):
@@ -177,15 +179,14 @@ class UpdateNFTRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: UpdateNFTPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: UpdateNFTPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
 
 
 class YieldFarmingRound(AbstractRound):
@@ -203,15 +204,16 @@ class YieldFarmingRound(AbstractRound):
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
     def check_payload(self, payload: YieldFarmingPayload) -> None:
         """Check payload."""
-        raise NotImplementedError
 
     def process_payload(self, payload: YieldFarmingPayload) -> None:
         """Process payload."""
-        raise NotImplementedError
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
 
 class TransactionSubmissionRound(DegenerateRound):
@@ -260,8 +262,10 @@ class SolarSpunkAbciApp(AbciApp[Event]):
     event_to_timeout: EventToTimeout = {}
     cross_period_persisted_keys: FrozenSet[str] = frozenset()
     db_pre_conditions: Dict[AppState, Set[str]] = {
-        SubscriptionManagementRound: {'participants'},
+        SubscriptionManagementRound: {
+            get_name(SynchronizedData.participants),
+        },
     }
     db_post_conditions: Dict[AppState, Set[str]] = {
-        TransactionSubmissionRound: {'most_voted_tx_hash'},
+        TransactionSubmissionRound: {get_name(SynchronizedData.most_voted_tx_hash)},
     }
