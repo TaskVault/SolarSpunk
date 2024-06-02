@@ -1,6 +1,13 @@
 #!/bin/bash
 
-cd ../python
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+# Navigate to the 'python' directory within the repository
+cd "$REPO_ROOT/python"
+
+# Remove the 'solar_punk' folder if it exists
+TARGET_FOLDER="$REPO_ROOT/python/solar_punk"
+[ -d "$TARGET_FOLDER" ] && rm -rf "$TARGET_FOLDER"
 
 # Fetch the agent from the local packages directory
 aea fetch zarathustra/solar_punk --local
