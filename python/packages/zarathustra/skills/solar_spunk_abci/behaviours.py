@@ -72,9 +72,10 @@ class AdjustMiningRateBehaviour(SolarSpunkBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
+        self.context.logger.info(f"Adjusting BTC Mining rate")
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = AdjustMiningRatePayload(sender=sender, content=...)
+            payload = AdjustMiningRatePayload(sender=sender)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -92,9 +93,10 @@ class CollateralizationBehaviour(SolarSpunkBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
+        self.context.logger.info(f"Adjusting collateralization")
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CollateralizationPayload(sender=sender, content=...)
+            payload = CollateralizationPayload(sender=sender)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -112,9 +114,10 @@ class DataCollectionBehaviour(SolarSpunkBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
+        self.context.logger.info("Collecting energy production/consumption data from users")
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = DataCollectionPayload(sender=sender, content=...)
+            payload = DataCollectionPayload(sender=sender)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -132,9 +135,10 @@ class SubscriptionManagementBehaviour(SolarSpunkBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
+        self.context.logger.info("Managing subscriptions")
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = SubscriptionManagementPayload(sender=sender, content=...)
+            payload = SubscriptionManagementPayload(sender=sender)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -152,9 +156,10 @@ class UpdateNFTBehaviour(SolarSpunkBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
+        self.context.logger.info("Updating NFTs")
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = UpdateNFTPayload(sender=sender, content=...)
+            payload = UpdateNFTPayload(sender=sender)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -172,9 +177,10 @@ class YieldFarmingBehaviour(SolarSpunkBaseBehaviour):
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
+        self.context.logger.info("Performing yield farming")
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = YieldFarmingPayload(sender=sender, content=...)
+            payload = YieldFarmingPayload(sender=sender)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
