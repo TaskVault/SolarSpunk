@@ -62,14 +62,12 @@ graph TB
 
 - Git
 - [Poetry](https://github.com/python-poetry/poetry)
+- [Docker](https://github.com/docker)
 - Protocol buffers v24.3
     ```shell
     wget https://github.com/protocolbuffers/protobuf/releases/download/v24.3/protoc-24.3-linux-x86_64.zip && unzip protoc-24.3-linux-x86_64.zip -d protoc && sudo mv protoc/bin/protoc /usr/local/bin/protoc
     ```
 - [Tendermint](https://docs.tendermint.com/v0.34/introduction/install.html) `==0.34.19`
-    ```shell
-    docker pull tendermint/tendermint:v0.34.19
-    ```
 
 
 ## Install from source
@@ -80,38 +78,42 @@ Clone the repository:
 git clone https://github.com/swissDAO-labs/SolarSpunk.git
 ```
 
-
-```
-make
-```
-
-
-## Getting started
-
-Fetch the agent from the local packages directory
+Setup the environment
 ```shell
-aea fetch zarathustra/solar_punk --local
-cd solar_punk
+cd SolarPunk && make
 ```
 
-Install agent dependencies
+
+## 1. Run Tendermint
+
+Either containerized
+
 ```shell
-aea install
+docker pull tendermint/tendermint:v0.34.19
 ```
 
-Create a key for the agent
+or, alternatively, run the node locally
+
 ```shell
-aea generate-key ethereum && aea add-key ethereum 
+wget https://github.com/tendermint/tendermint/releases/download/v0.34.19/tendermint_0.34.19_linux_amd64.tar.gz
+tar -xf tendermint_0.34.19_linux_amd64.tar.gz
+sudo mv tendermint /usr/local/bin/tendermint
 ```
 
-Issue certificates for the Libp2p connection
 ```shell
-aea issue-certificates
+sudo chown -R $(whoami):$(whoami) /home/(whoami)/tendermint_data
 ```
 
-and run the agent
+Run the Tendermint node:
 ```shell
-aea run
+./scripts/run_tendermint.sh
+```
+
+
+## 2. Run the agent
+
+```shell
+scripts/run_agent.sh
 ```
 
 
@@ -123,4 +125,3 @@ Explore the project's version history and changes in [CHANGELOG.md](CHANGELOG.md
 
 ## License
 This project is licensed under the [Apache2.0 license](LICENSE).
-
