@@ -31,8 +31,8 @@ skills:
 - valory/registration_abci:0.1.0:bafybeibqbggb642wxntkivyamjpkaevcv54v6tvttlhbe2mq4oqmqtfbiu
 - valory/reset_pause_abci:0.1.0:bafybeidqwxtyjc3p3zkw77vchtemojdybucuk7arxo3vniw4karfxp4zmq
 - valory/transaction_settlement_abci:0.1.0:bafybeib6tvxn6ko5mzzikrwjulancgivy6cpgnhcdw6f3bbm6vnzcwnnne
-- zarathustra/solar_spunk:0.1.0:bafybeiboagjezusgqhfyl2dwvcnhaje2fxbt777i5ptp62k6sx7xa6t5va
-- zarathustra/solar_spunk_abci:0.1.0:bafybeigz25qu4qvicvnxtw7bxij3nmoagt63ti55f2wrnpf4ucyhd7ri64
+- zarathustra/solar_spunk:0.1.0:bafybeidwxq3uur5il3o2tysjhtphikkj2udt5kc2coad35s2qtr342i4iq
+- zarathustra/solar_spunk_abci:0.1.0:bafybeidm3453condsaffvqb36prj7uteom6xzoekoylfhfvxd65j7iy4jq
 customs: []
 default_ledger: ethereum
 required_ledgers:

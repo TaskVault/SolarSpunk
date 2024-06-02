@@ -1,8 +1,8 @@
 {
     "dev": {
-        "skill/zarathustra/solar_spunk_abci/0.1.0": "bafybeigz25qu4qvicvnxtw7bxij3nmoagt63ti55f2wrnpf4ucyhd7ri64",
-        "skill/zarathustra/solar_spunk/0.1.0": "bafybeiboagjezusgqhfyl2dwvcnhaje2fxbt777i5ptp62k6sx7xa6t5va",
-        "agent/zarathustra/solar_punk/0.1.0": "bafybeiefbuklq5hdex7nl3der3ppovxg7cg4drlckr6jxhzgx34t56lixy"
+        "skill/zarathustra/solar_spunk_abci/0.1.0": "bafybeidm3453condsaffvqb36prj7uteom6xzoekoylfhfvxd65j7iy4jq",
+        "skill/zarathustra/solar_spunk/0.1.0": "bafybeidwxq3uur5il3o2tysjhtphikkj2udt5kc2coad35s2qtr342i4iq",
+        "agent/zarathustra/solar_punk/0.1.0": "bafybeih7mtrtu76ife7vpo7it2tp7rhw3bxb2ge3h37gr2ev47l7nz6hrm"
     },
     "third_party": {
         "protocol/valory/abci/0.1.0": "bafybeiaqmp7kocbfdboksayeqhkbrynvlfzsx4uy4x6nohywnmaig4an7u",
