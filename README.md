@@ -67,9 +67,6 @@ graph TB
     wget https://github.com/protocolbuffers/protobuf/releases/download/v24.3/protoc-24.3-linux-x86_64.zip && unzip protoc-24.3-linux-x86_64.zip -d protoc && sudo mv protoc/bin/protoc /usr/local/bin/protoc
     ```
 - [Tendermint](https://docs.tendermint.com/v0.34/introduction/install.html) `==0.34.19`
-    ```shell
-    docker pull tendermint/tendermint:v0.34.19
-    ```
 
 
 ## Install from source
@@ -80,9 +77,9 @@ Clone the repository:
 git clone https://github.com/swissDAO-labs/SolarSpunk.git
 ```
 
-
-```
-make
+Setup the environment
+```shell
+cd SolarPunk && make
 ```
 
 
@@ -101,7 +98,7 @@ aea install
 
 Create a key for the agent
 ```shell
-aea generate-key ethereum && aea add-key ethereum 
+aea generate-key ethereum && aea add-key ethereum
 ```
 
 Issue certificates for the Libp2p connection
@@ -115,6 +112,32 @@ aea run
 ```
 
 
+## Tendermint
+
+Containerized
+
+```shell
+docker pull tendermint/tendermint:v0.34.19
+```
+
+or, alternatively, run the node locally
+
+```shell
+wget https://github.com/tendermint/tendermint/releases/download/v0.34.19/tendermint_0.34.19_linux_amd64.tar.gz
+tar -xf tendermint_0.34.19_linux_amd64.tar.gz
+sudo mv tendermint /usr/local/bin/tendermint
+```
+
+```shell
+sudo chown -R $(whoami):$(whoami) /home/(whoami)/tendermint_data
+```
+
+Run the Tendermint node:
+```shell
+./scripts/run_tendermint.sh
+```
+
+
 ## Contributing
 Learn how to contribute to the project by following the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -123,4 +146,3 @@ Explore the project's version history and changes in [CHANGELOG.md](CHANGELOG.md
 
 ## License
 This project is licensed under the [Apache2.0 license](LICENSE).
-
