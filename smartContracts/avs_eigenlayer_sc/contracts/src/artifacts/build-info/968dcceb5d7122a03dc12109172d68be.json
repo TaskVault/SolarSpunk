@@ -1,0 +1,695 @@
+{
+	"id": "968dcceb5d7122a03dc12109172d68be",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.25",
+	"solcLongVersion": "0.8.25+commit.b61c2a91",
+	"input": {
+		"language": "Solidity",
+		"settings": {
+			"optimizer": {
+				"enabled": true,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		},
+		"sources": {
+			"avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol": {
+				"content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.9;\n\ninterface IHelloWorldServiceManager {\n    // EVENTS\n    event NewTaskCreated(uint32 indexed taskIndex, Task task);\n\n    event TaskResponded(uint32 indexed taskIndex, Task task, address operator);\n\n    // STRUCTS\n    struct Task {\n        string name;\n        uint32 taskCreatedBlock;\n    }\n\n    // FUNCTIONS\n    // NOTE: this function creates new task.\n    function createNewTask(\n        string memory name\n    ) external;\n\n    // NOTE: this function is called by operators to respond to a task.\n    function respondToTask(\n        Task calldata task,\n        uint32 referenceTaskIndex,\n        bytes calldata signature\n    ) external;\n}"
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol": {
+				"IHelloWorldServiceManager": {
+					"abi": [
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "uint32",
+									"name": "taskIndex",
+									"type": "uint32"
+								},
+								{
+									"components": [
+										{
+											"internalType": "string",
+											"name": "name",
+											"type": "string"
+										},
+										{
+											"internalType": "uint32",
+											"name": "taskCreatedBlock",
+											"type": "uint32"
+										}
+									],
+									"indexed": false,
+									"internalType": "struct IHelloWorldServiceManager.Task",
+									"name": "task",
+									"type": "tuple"
+								}
+							],
+							"name": "NewTaskCreated",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": true,
+									"internalType": "uint32",
+									"name": "taskIndex",
+									"type": "uint32"
+								},
+								{
+									"components": [
+										{
+											"internalType": "string",
+											"name": "name",
+											"type": "string"
+										},
+										{
+											"internalType": "uint32",
+											"name": "taskCreatedBlock",
+											"type": "uint32"
+										}
+									],
+									"indexed": false,
+									"internalType": "struct IHelloWorldServiceManager.Task",
+									"name": "task",
+									"type": "tuple"
+								},
+								{
+									"indexed": false,
+									"internalType": "address",
+									"name": "operator",
+									"type": "address"
+								}
+							],
+							"name": "TaskResponded",
+							"type": "event"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "name",
+									"type": "string"
+								}
+							],
+							"name": "createNewTask",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"components": [
+										{
+											"internalType": "string",
+											"name": "name",
+											"type": "string"
+										},
+										{
+											"internalType": "uint32",
+											"name": "taskCreatedBlock",
+											"type": "uint32"
+										}
+									],
+									"internalType": "struct IHelloWorldServiceManager.Task",
+									"name": "task",
+									"type": "tuple"
+								},
+								{
+									"internalType": "uint32",
+									"name": "referenceTaskIndex",
+									"type": "uint32"
+								},
+								{
+									"internalType": "bytes",
+									"name": "signature",
+									"type": "bytes"
+								}
+							],
+							"name": "respondToTask",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"createNewTask(string)": "85edf874",
+							"respondToTask((string,uint32),uint32,bytes)": "3415a49c"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.25+commit.b61c2a91\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"taskIndex\",\"type\":\"uint32\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"taskCreatedBlock\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"struct IHelloWorldServiceManager.Task\",\"name\":\"task\",\"type\":\"tuple\"}],\"name\":\"NewTaskCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"taskIndex\",\"type\":\"uint32\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"taskCreatedBlock\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"struct IHelloWorldServiceManager.Task\",\"name\":\"task\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"TaskResponded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"createNewTask\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint32\",\"name\":\"taskCreatedBlock\",\"type\":\"uint32\"}],\"internalType\":\"struct IHelloWorldServiceManager.Task\",\"name\":\"task\",\"type\":\"tuple\"},{\"internalType\":\"uint32\",\"name\":\"referenceTaskIndex\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"respondToTask\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol\":\"IHelloWorldServiceManager\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol\":{\"keccak256\":\"0x40cd9bc6e45aed360bab845e5e0a4e52dcb1028e980da09eab8293954a79f56c\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://826c9fdc6ed8167f0f528ed864616cee4284a89991aea9fa9bafe9597b36434e\",\"dweb:/ipfs/QmPJVDoWVURfYBXrqTQDNuqayWGBY3C6pVfWotGDDxgKWW\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol": {
+				"ast": {
+					"absolutePath": "avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol",
+					"exportedSymbols": {
+						"IHelloWorldServiceManager": [
+							38
+						]
+					},
+					"id": 39,
+					"license": "UNLICENSED",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".9"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "39:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "IHelloWorldServiceManager",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 38,
+							"linearizedBaseContracts": [
+								38
+							],
+							"name": "IHelloWorldServiceManager",
+							"nameLocation": "74:25:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"anonymous": false,
+									"eventSelector": "58180a6a0403a63c2b5ce4b85d129d46a80d37851b2216bd0a98b59e7309b847",
+									"id": 8,
+									"name": "NewTaskCreated",
+									"nameLocation": "126:14:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 7,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 3,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "taskIndex",
+												"nameLocation": "156:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 8,
+												"src": "141:24:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint32",
+													"typeString": "uint32"
+												},
+												"typeName": {
+													"id": 2,
+													"name": "uint32",
+													"nodeType": "ElementaryTypeName",
+													"src": "141:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint32",
+														"typeString": "uint32"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 6,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "task",
+												"nameLocation": "172:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 8,
+												"src": "167:9:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Task_$22_memory_ptr",
+													"typeString": "struct IHelloWorldServiceManager.Task"
+												},
+												"typeName": {
+													"id": 5,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 4,
+														"name": "Task",
+														"nameLocations": [
+															"167:4:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 22,
+														"src": "167:4:0"
+													},
+													"referencedDeclaration": 22,
+													"src": "167:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Task_$22_storage_ptr",
+														"typeString": "struct IHelloWorldServiceManager.Task"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "140:37:0"
+									},
+									"src": "120:58:0"
+								},
+								{
+									"anonymous": false,
+									"eventSelector": "8eb2d2fcccf5801e10ff58cd73e8781ba923122963789378771f03c1148b023e",
+									"id": 17,
+									"name": "TaskResponded",
+									"nameLocation": "190:13:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 16,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 10,
+												"indexed": true,
+												"mutability": "mutable",
+												"name": "taskIndex",
+												"nameLocation": "219:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "204:24:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint32",
+													"typeString": "uint32"
+												},
+												"typeName": {
+													"id": 9,
+													"name": "uint32",
+													"nodeType": "ElementaryTypeName",
+													"src": "204:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint32",
+														"typeString": "uint32"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 13,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "task",
+												"nameLocation": "235:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "230:9:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Task_$22_memory_ptr",
+													"typeString": "struct IHelloWorldServiceManager.Task"
+												},
+												"typeName": {
+													"id": 12,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 11,
+														"name": "Task",
+														"nameLocations": [
+															"230:4:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 22,
+														"src": "230:4:0"
+													},
+													"referencedDeclaration": 22,
+													"src": "230:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Task_$22_storage_ptr",
+														"typeString": "struct IHelloWorldServiceManager.Task"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 15,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "operator",
+												"nameLocation": "249:8:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 17,
+												"src": "241:16:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 14,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "241:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "203:55:0"
+									},
+									"src": "184:75:0"
+								},
+								{
+									"canonicalName": "IHelloWorldServiceManager.Task",
+									"id": 22,
+									"members": [
+										{
+											"constant": false,
+											"id": 19,
+											"mutability": "mutable",
+											"name": "name",
+											"nameLocation": "309:4:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 22,
+											"src": "302:11:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 18,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "302:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 21,
+											"mutability": "mutable",
+											"name": "taskCreatedBlock",
+											"nameLocation": "330:16:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 22,
+											"src": "323:23:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint32",
+												"typeString": "uint32"
+											},
+											"typeName": {
+												"id": 20,
+												"name": "uint32",
+												"nodeType": "ElementaryTypeName",
+												"src": "323:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint32",
+													"typeString": "uint32"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "Task",
+									"nameLocation": "287:4:0",
+									"nodeType": "StructDefinition",
+									"scope": 38,
+									"src": "280:73:0",
+									"visibility": "public"
+								},
+								{
+									"functionSelector": "85edf874",
+									"id": 27,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "createNewTask",
+									"nameLocation": "430:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 25,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 24,
+												"mutability": "mutable",
+												"name": "name",
+												"nameLocation": "467:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 27,
+												"src": "453:18:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 23,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "453:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "443:34:0"
+									},
+									"returnParameters": {
+										"id": 26,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "486:0:0"
+									},
+									"scope": 38,
+									"src": "421:66:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "3415a49c",
+									"id": 37,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "respondToTask",
+									"nameLocation": "574:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 35,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 30,
+												"mutability": "mutable",
+												"name": "task",
+												"nameLocation": "611:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 37,
+												"src": "597:18:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Task_$22_calldata_ptr",
+													"typeString": "struct IHelloWorldServiceManager.Task"
+												},
+												"typeName": {
+													"id": 29,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 28,
+														"name": "Task",
+														"nameLocations": [
+															"597:4:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 22,
+														"src": "597:4:0"
+													},
+													"referencedDeclaration": 22,
+													"src": "597:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Task_$22_storage_ptr",
+														"typeString": "struct IHelloWorldServiceManager.Task"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 32,
+												"mutability": "mutable",
+												"name": "referenceTaskIndex",
+												"nameLocation": "632:18:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 37,
+												"src": "625:25:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint32",
+													"typeString": "uint32"
+												},
+												"typeName": {
+													"id": 31,
+													"name": "uint32",
+													"nodeType": "ElementaryTypeName",
+													"src": "625:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint32",
+														"typeString": "uint32"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 34,
+												"mutability": "mutable",
+												"name": "signature",
+												"nameLocation": "675:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 37,
+												"src": "660:24:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes_calldata_ptr",
+													"typeString": "bytes"
+												},
+												"typeName": {
+													"id": 33,
+													"name": "bytes",
+													"nodeType": "ElementaryTypeName",
+													"src": "660:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes_storage_ptr",
+														"typeString": "bytes"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "587:103:0"
+									},
+									"returnParameters": {
+										"id": 36,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "699:0:0"
+									},
+									"scope": 38,
+									"src": "565:135:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 39,
+							"src": "64:638:0",
+							"usedErrors": [],
+							"usedEvents": [
+								8,
+								17
+							]
+						}
+					],
+					"src": "39:663:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
