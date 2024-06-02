@@ -59,10 +59,13 @@ graph TB
 ```
 
 
-Links to additional information
+Links to additional information and deployments:
 - [Miro board](https://miro.com/app/board/uXjVKBxV08s=/?utm_source=notification&utm_medium=email&utm_campaign=daily-updates&utm_content=view-board-cta)
 - [Figma designs](https://www.figma.com/design/NzKv0Mps0UMFb43EmRJanm/brand%2Fpitch?node-id=0-1)
 - [the subgraph](https://testnet.thegraph.com/explorer/subgraphs/CQ8qbXnJH4GhtaLDuy6zcubpCAd7A3sCzLEWLoQSPHJT?v=0&view=Overview&chain=arbitrum-sepolia)
+- [Sepolia Spunk Token Contract](https://sepolia.etherscan.io/address/0xbbddd5e873db3440d37790560bb58e68567cba9a)
+- [Sepolia NFT Contract](https://sepolia.etherscan.io/address/0x1ddfaf71fc609022cbe0bc3588479b107304f72d)
+- [Linea NFT Contract](https://sepolia.lineascan.build/address/0xf9feadaa7dbef738ee821ef339754194bc0d98ac#code)
 
 
 ## Requirements
