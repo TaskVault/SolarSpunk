@@ -26,6 +26,7 @@
 - Grants communities autonomy in managing their energy resources.
 
 
+### Overview of Finite State Machine Design
 ```mermaid
 
 graph TB
@@ -56,6 +57,12 @@ graph TB
     TransactionSettlementAbciApp --> ResetAndPauseAbciApp
     ResetAndPauseAbciApp --> SubscriptionManagementRound
 ```
+
+
+Links to additional information
+- [Miro board](https://miro.com/app/board/uXjVKBxV08s=/?utm_source=notification&utm_medium=email&utm_campaign=daily-updates&utm_content=view-board-cta)
+- [Figma designs](https://www.figma.com/design/NzKv0Mps0UMFb43EmRJanm/brand%2Fpitch?node-id=0-1)
+- [the subgraph](https://testnet.thegraph.com/explorer/subgraphs/CQ8qbXnJH4GhtaLDuy6zcubpCAd7A3sCzLEWLoQSPHJT?v=0&view=Overview&chain=arbitrum-sepolia)
 
 
 ## Requirements
@@ -101,7 +108,8 @@ sudo mv tendermint /usr/local/bin/tendermint
 ```
 
 ```shell
-sudo chown -R $(whoami):$(whoami) /home/(whoami)/tendermint_data
+GROUP=$(id -gn)
+sudo chown -R $(whoami):$GROUP /home/$(whoami)/tendermint_data
 ```
 
 Run the Tendermint node:
