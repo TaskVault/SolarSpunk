@@ -62,6 +62,7 @@ graph TB
 
 - Git
 - [Poetry](https://github.com/python-poetry/poetry)
+- [Docker](https://github.com/docker)
 - Protocol buffers v24.3
     ```shell
     wget https://github.com/protocolbuffers/protobuf/releases/download/v24.3/protoc-24.3-linux-x86_64.zip && unzip protoc-24.3-linux-x86_64.zip -d protoc && sudo mv protoc/bin/protoc /usr/local/bin/protoc
@@ -83,38 +84,9 @@ cd SolarPunk && make
 ```
 
 
-## Getting started
+## 1. Run Tendermint
 
-Fetch the agent from the local packages directory
-```shell
-aea fetch zarathustra/solar_punk --local
-cd solar_punk
-```
-
-Install agent dependencies
-```shell
-aea install
-```
-
-Create a key for the agent
-```shell
-aea generate-key ethereum && aea add-key ethereum
-```
-
-Issue certificates for the Libp2p connection
-```shell
-aea issue-certificates
-```
-
-and run the agent
-```shell
-aea run
-```
-
-
-## Tendermint
-
-Containerized
+Either containerized
 
 ```shell
 docker pull tendermint/tendermint:v0.34.19
@@ -135,6 +107,13 @@ sudo chown -R $(whoami):$(whoami) /home/(whoami)/tendermint_data
 Run the Tendermint node:
 ```shell
 ./scripts/run_tendermint.sh
+```
+
+
+## 2. Run the agent
+
+```shell
+scripts/run_agent.sh
 ```
 
 
