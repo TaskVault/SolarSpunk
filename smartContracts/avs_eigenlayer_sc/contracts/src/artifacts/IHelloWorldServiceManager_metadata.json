@@ -1,0 +1,162 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint32",
+						"name": "taskIndex",
+						"type": "uint32"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint32",
+								"name": "taskCreatedBlock",
+								"type": "uint32"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct IHelloWorldServiceManager.Task",
+						"name": "task",
+						"type": "tuple"
+					}
+				],
+				"name": "NewTaskCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint32",
+						"name": "taskIndex",
+						"type": "uint32"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint32",
+								"name": "taskCreatedBlock",
+								"type": "uint32"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct IHelloWorldServiceManager.Task",
+						"name": "task",
+						"type": "tuple"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "TaskResponded",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "createNewTask",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint32",
+								"name": "taskCreatedBlock",
+								"type": "uint32"
+							}
+						],
+						"internalType": "struct IHelloWorldServiceManager.Task",
+						"name": "task",
+						"type": "tuple"
+					},
+					{
+						"internalType": "uint32",
+						"name": "referenceTaskIndex",
+						"type": "uint32"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "respondToTask",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol": "IHelloWorldServiceManager"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"avs_eigenlayer_sc/contracts/src/IHelloWorldServiceManager.sol": {
+			"keccak256": "0x40cd9bc6e45aed360bab845e5e0a4e52dcb1028e980da09eab8293954a79f56c",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://826c9fdc6ed8167f0f528ed864616cee4284a89991aea9fa9bafe9597b36434e",
+				"dweb:/ipfs/QmPJVDoWVURfYBXrqTQDNuqayWGBY3C6pVfWotGDDxgKWW"
+			]
+		}
+	},
+	"version": 1
+}
